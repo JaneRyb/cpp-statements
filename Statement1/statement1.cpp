@@ -4,8 +4,8 @@
 
 
 
-void comparing(int argc, char* argv[]){
-
+void comparing(int argc, char* argv[])
+{
     if (argc < 3)
     {
         std::cerr << "Usage: wordcounter <N>";
