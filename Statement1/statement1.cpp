@@ -34,16 +34,16 @@ void comparing(int argc, char* argv[])
         start_2++;
     }
 
-    int len1 = 0;
-    while ((start_1[len1] != '\0') && (start_1[len1] != '.')) 
+    int len_1 = 0;
+    while ((start_1[len_1] != '\0') && (start_1[len_1] != '.')) 
     {
-        len1++;
+        len_1++;
     }
 
-    int len2 = 0;
-    while ((start_2[len2] != '\0') && (start_2[len2] != '.'))
+    int len_2 = 0;
+    while ((start_2[len_2] != '\0') && (start_2[len_2] != '.'))
     {
-        len2++;
+        len_2++;
     }
 
     size_t prov = 0;
