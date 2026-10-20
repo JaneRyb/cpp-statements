@@ -1,26 +1,15 @@
 #include <iostream>
-#include <charconv>
-
 
 int number_for_array(int argc, char* argv[])
 {
-    if (argc < 2)
-    {
-        std::cerr << "Usage: wordcounter <N>";
-        return 0;
-    }
-
+    char* start = argv[1];
     int number = 0;
 
-    char* start = argv[1];
-    char* end = start;
-
-    while (* end != '\0')
+    while (* start != '\0')
     {
-        end++;
+        number = number * 10 + (* start - '0');
+        start++;
     }
-
-    std::from_chars(start, end, number);
 
     return number;
 }
@@ -31,12 +20,33 @@ int* read_array(int num)
 
     for (size_t i = 0; i < num; i++)
     {
-        int element;
-        std::cin >> element;
-        array[i] = element;
+        std::cin >> array[i];
     }
 
     return array;
+}
+
+
+void reverse_array(int* array, int start, int end)
+{
+    while (start < end)
+    {
+        int element = array[start];
+        array[start] = array[end];
+        array[end] = element;
+
+        start++;
+        end--;
+    }
+}
+
+void remake_array(int* array, int step, int num)
+{
+    if (step == 0) return;
+
+    reverse_array(array, 0, num - 1);      
+    reverse_array(array, 0, step - 1);      
+    reverse_array(array, step, num - 1);
 }
 
 int main(int argc, char* argv[])
@@ -52,16 +62,16 @@ int main(int argc, char* argv[])
         step += num;
     }
 
+    remake_array(array, step, num);
+
     for (size_t i = 0; i < num; i++)
     {
-        int index = (i + num - step) % num;
-        std::cout << array[index] << std::endl;
+        std::cout << array[i] << std::endl;
     }
     
     for (size_t i = 0; i < num; i++)
     {
-         int index = (i +  num - step) % num;
-        std::cout << array[index] << ' ';
+        std::cout << array[i] << ' ';
     }
 
     delete[] array;
