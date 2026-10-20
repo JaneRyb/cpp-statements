@@ -1,26 +1,16 @@
 #include <iostream>
-#include <charconv>
 
 
 int number_for_array(int argc, char* argv[])
 {
-    if (argc < 2)
-    {
-        std::cerr << "Usage: wordcounter <N>";
-        return 0;
-    }
-
+    char* start = argv[1];
     int number = 0;
 
-    char* start = argv[1];
-    char* end = start;
-
-    while (* end != '\0')
+    while (* start != '\0')
     {
-        end++;
+        number = number * 10 + (* start - '0');
+        start++;
     }
-
-    std::from_chars(start, end, number);
 
     return number;
 }
@@ -31,9 +21,7 @@ double* read_array(int num)
 
     for (size_t i = 0; i < num; i++)
     {
-        double element;
-        std::cin >> element;
-        array[i] = element;
+        std::cin >> array[i];
     }
 
     return array;
@@ -45,7 +33,7 @@ int main(int argc, char* argv[])
     double* array_a = read_array(num);
     double* array_b = read_array(num);
 
-    double result = 0;
+    double result = 0.0;
 
     for (size_t i = 0; i < num; i++)
     {
@@ -53,9 +41,10 @@ int main(int argc, char* argv[])
     }
 
     std::cout.precision(6);
-    std::cout << std::fixed << result;
+    std::cout << std::fixed << result << '\n';
 
     delete[] array_a;
     delete[] array_b;
     return 0;
 }
+
