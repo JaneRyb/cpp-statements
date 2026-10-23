@@ -3,7 +3,6 @@
 
 void comparing(char* argv[])
 {
-
     char* start_1 = argv[1];
     char* start_2 = argv[2];
     bool sign = false;
