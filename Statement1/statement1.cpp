@@ -48,11 +48,11 @@ void comparing(int argc, char* argv[])
 
     size_t prov = 0;
 
-    if (len1 > len2)
+    if (len_1 > len_2)
     {
         prov = 1;
     }
-    else if (len1 < len2)
+    else if (len_1 < len_2)
     {
         prov = 2;
     }
