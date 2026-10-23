@@ -1,7 +1,7 @@
 #include <iostream>
 
 
-void comparing(int argc, char* argv[])
+void comparing(char* argv[])
 {
 
     char* start_1 = argv[1];
@@ -127,6 +127,11 @@ void comparing(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
-    comparing(argc, argv);
+    if (argc < 3) {
+        std::cerr << "Error: Provide two numbers to compare";
+        return 1;
+    }
+
+    comparing(argv);
     return 0;
 }
