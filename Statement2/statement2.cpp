@@ -1,8 +1,8 @@
 #include <iostream>
 
-int number_for_array(int argc, char* argv[])
+int number_for_array(char* argv)
 {
-    char* start = argv[1];
+    char* start = argv;
     int number = 0;
 
     while (* start != '\0')
@@ -18,7 +18,7 @@ int* read_array(int num)
 {
     int* array = new int[num];
 
-    for (size_t i = 0; i < num; i++)
+    for (int i = 0; i < num; i++)
     {
         std::cin >> array[i];
     }
@@ -51,7 +51,19 @@ void remake_array(int* array, int step, int num)
 
 int main(int argc, char* argv[])
 {
-    int num = number_for_array(argc, argv);
+    int num = 0;
+    if (argc >= 2) 
+    {
+        num = number_for_array(argv[1]);
+    } 
+    else 
+    {
+        if (!(std::cin >> num)) 
+        {
+            return 0;
+        }
+    }
+    
     int* array = read_array(num);
 
     int step;
@@ -64,15 +76,20 @@ int main(int argc, char* argv[])
 
     remake_array(array, step, num);
 
-    for (size_t i = 0; i < num; i++)
+    for (int i = 0; i < num; i++)
     {
         std::cout << array[i] << std::endl;
     }
     
-    for (size_t i = 0; i < num; i++)
+    for (int i = 0; i < num; i++)
     {
-        std::cout << array[i] << ' ';
+        std::cout << array[i];
+        if (i < num - 1) 
+        {
+            std::cout << ' ';
+        }
     }
+    std::cout << std::endl;
 
     delete[] array;
     return 0;
